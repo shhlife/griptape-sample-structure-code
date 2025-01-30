@@ -43,7 +43,7 @@ def run(args: List[str] = typer.Argument(...)):
 
     # If you want to run a Griptape Structure, set this to True
     # otherwise, if you're just running regular Python code, set it to False
-    use_structure = False
+    use_structure = True
 
     if use_structure:
         # Setup the cloud listener before Griptape Structure
