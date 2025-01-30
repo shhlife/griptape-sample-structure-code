@@ -37,8 +37,8 @@ app = typer.Typer(add_completion=False)
 
 
 @app.command()
-def run(prompt: str):
-    """Run the agent with a prompt."""
+def run(*args: str):
+    """Run the agent with inputs."""
 
     # If you want to run a Griptape Structure, set this to True
     # otherwise, if you're just running regular Python code, set it to False
@@ -50,11 +50,11 @@ def run(prompt: str):
 
         # Run the Griptape Structure
         agent = Agent()
-        agent.run(prompt)
+        agent.run(*args)
     else:
         # Run whatever code you want and make sure to save the output(s) as a TextArtifact(s)
         output_artifact_msg = TextArtifact("Hello from a Griptape Cloud Structure.")
-        output_artifact_prompt = TextArtifact(prompt)
+        output_artifact_prompt = TextArtifact(" ".join(args))
 
         # Create Input and Output Artifacts
         task_input = TextArtifact(value=None)
