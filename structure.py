@@ -54,12 +54,13 @@ def run(args: List[str] = typer.Argument(...)):
         agent.run(args)
     else:
         # Run whatever code you want and make sure to save the output(s) as a TextArtifact(s)
-        output_artifact_msg = TextArtifact("Hello from a Griptape Cloud Structure.")
-        output_artifact_prompt = TextArtifact(args)
+        agent = Agent()
+        agent.run(args)
+        # output_artifact_prompt = TextArtifact(agent.output)
 
         # Create Input and Output Artifacts
         task_input = TextArtifact(value=None)
-        task_output = ListArtifact([output_artifact_msg, output_artifact_prompt])
+        task_output = ListArtifact([agent.output])
         print(task_output)
 
         # Setup the cloud listener after your code, and before
